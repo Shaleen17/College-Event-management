@@ -2,12 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import CertificateGenerator from '../components/CertificateGenerator';
 
 const MyRegistrations = () => {
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
+
+  // Certificate modal state
+  const [certData, setCertData] = useState(null);
 
   useEffect(() => {
     fetchRegistrations();
@@ -41,7 +45,19 @@ const MyRegistrations = () => {
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString();
+    return new Date(dateString).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  };
+
+  const isEventPast = (date) => new Date(date) <= new Date();
+
+  const openCertificate = (reg) => {
+    setCertData({
+      studentName: user?.name || 'Student',
+      eventTitle: reg.event.title,
+      eventDate: reg.event.date,
+      eventVenue: reg.event.venue,
+      eventCategory: reg.event.category,
+    });
   };
 
   return (
@@ -63,18 +79,43 @@ const MyRegistrations = () => {
                   <h3>{reg.event.title}</h3>
                   <p>📅 {formatDate(reg.event.date)} at {reg.event.time}</p>
                   <p>📍 {reg.event.venue}</p>
-                  <span className={`category-badge ${reg.event.category.toLowerCase()}`}>
-                    {reg.event.category}
-                  </span>
+                  <div style={{ display: 'flex', gap: '8px', marginTop: '4px', flexWrap: 'wrap', alignItems: 'center' }}>
+                    <span className={`category-badge ${reg.event.category.toLowerCase()}`}>
+                      {reg.event.category}
+                    </span>
+                    {isEventPast(reg.event.date) ? (
+                      <span style={{ padding: '3px 10px', borderRadius: '12px', fontSize: '0.78rem', fontWeight: 600, background: '#f1f5f9', color: '#5A6B7A' }}>
+                        ✅ Completed
+                      </span>
+                    ) : (
+                      <span style={{ padding: '3px 10px', borderRadius: '12px', fontSize: '0.78rem', fontWeight: 600, background: '#f0fdf4', color: '#15803d' }}>
+                        🟢 Upcoming
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="reg-actions">
-                  <Link to={`/event/${reg.event._id}`} className="btn-secondary">View</Link>
-                  <button onClick={() => handleCancel(reg.event._id)} className="btn-danger">Cancel</button>
+                  <Link to={`/event/${reg.event._id}`} className="btn-secondary btn-small">View</Link>
+                  {isEventPast(reg.event.date) ? (
+                    <button onClick={() => openCertificate(reg)} className="btn-small" style={{ background: '#E87B35', color: 'white' }}>
+                      📜 Certificate
+                    </button>
+                  ) : (
+                    <button onClick={() => handleCancel(reg.event._id)} className="btn-danger btn-small">Cancel</button>
+                  )}
                 </div>
               </div>
             ))
           )}
         </div>
+      )}
+
+      {/* Certificate Modal */}
+      {certData && (
+        <CertificateGenerator
+          {...certData}
+          onClose={() => setCertData(null)}
+        />
       )}
     </div>
   );

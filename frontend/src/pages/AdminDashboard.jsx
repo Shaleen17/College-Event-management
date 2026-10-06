@@ -46,7 +46,10 @@ const AdminDashboard = () => {
     <div className="page-container">
       <div className="dashboard-header">
         <h2>Admin Dashboard</h2>
-        <Link to="/admin/event/new" className="btn-primary">Add New Event</Link>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <Link to="/admin/analytics" className="btn-secondary btn-small" style={{ padding: '10px 20px', fontSize: '1rem' }}>📊 Analytics</Link>
+          <Link to="/admin/event/new" className="btn-primary">Add New Event</Link>
+        </div>
       </div>
       
       {!loading && (

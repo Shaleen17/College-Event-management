@@ -1135,3 +1135,421 @@ button:disabled {
     font-size: 2rem;
   }
 }
+
+/* =============================
+   ANALYTICS DASHBOARD
+   ============================= */
+.analytics-page {
+  padding-top: 2rem;
+}
+.analytics-header {
+  margin-bottom: 2rem;
+}
+.analytics-header h2 {
+  font-size: 2rem;
+  color: #1A2332;
+}
+.analytics-subtitle {
+  color: #5A6B7A;
+  margin-top: -0.5rem;
+}
+.analytics-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+.analytics-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px 16px;
+  border-left: 4px solid;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+.analytics-stat-card:nth-child(1) { animation-delay: 0.05s; }
+.analytics-stat-card:nth-child(2) { animation-delay: 0.1s; }
+.analytics-stat-card:nth-child(3) { animation-delay: 0.15s; }
+.analytics-stat-card:nth-child(4) { animation-delay: 0.2s; }
+.analytics-stat-card:nth-child(5) { animation-delay: 0.25s; }
+.analytics-stat-icon { font-size: 1.8rem; margin-bottom: 6px; }
+.analytics-stat-number { font-size: 2rem; font-weight: 700; }
+.analytics-stat-label { font-size: 0.82rem; color: #5A6B7A; margin-top: 4px; }
+
+.analytics-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.analytics-chart-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  animation: fadeIn 0.6s ease;
+}
+.analytics-chart-full {
+  grid-column: 1 / -1;
+}
+.chart-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1A2332;
+  margin-bottom: 1rem;
+}
+/* Fill bar in analytics table */
+.fill-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+.fill-bar {
+  height: 8px;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  flex: 1;
+}
+.fill-pct {
+  font-size: 0.82rem;
+  color: #5A6B7A;
+  min-width: 32px;
+}
+
+@media (max-width: 768px) {
+  .analytics-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================
+   USER PROFILE PAGE
+   ============================= */
+.profile-page {
+  padding-top: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.profile-hero {
+  background: linear-gradient(135deg, #2D5741, #1a3a2a);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 2rem;
+  color: white;
+  animation: fadeIn 0.5s ease;
+  flex-wrap: wrap;
+}
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 3px solid rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+.profile-hero-info {
+  flex: 1;
+}
+.profile-name {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 4px;
+}
+.profile-email {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+.profile-role-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  text-transform: capitalize;
+}
+.profile-meta-stats {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+}
+.profile-meta-item {
+  text-align: center;
+}
+.profile-meta-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #E87B35;
+}
+.profile-meta-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+/* Tabs */
+.profile-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #E8DDD0;
+  flex-wrap: wrap;
+}
+.profile-tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #5A6B7A;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: -2px;
+}
+.profile-tab-btn:hover { color: #2D5741; }
+.profile-tab-btn.active {
+  color: #2D5741;
+  border-bottom-color: #2D5741;
+  font-weight: 600;
+}
+
+.profile-tab-content {
+  animation: fadeIn 0.3s ease;
+}
+.profile-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.profile-section-title {
+  font-size: 1.2rem;
+  color: #1A2332;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E8DDD0;
+}
+
+@media (max-width: 600px) {
+  .profile-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-meta-stats {
+    justify-content: center;
+  }
+}
+
+/* =============================
+   CERTIFICATE GENERATOR
+   ============================= */
+.cert-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+.cert-modal {
+  background: #f8f9fa;
+  border-radius: 16px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: bounceIn 0.5s ease;
+}
+.cert-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.cert-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* The actual certificate */
+.certificate {
+  width: 100%;
+  max-width: 860px;
+  background: white;
+  font-family: 'Georgia', serif;
+}
+.cert-outer-border {
+  border: 6px solid;
+  padding: 6px;
+  border-radius: 4px;
+}
+.cert-inner-border {
+  border: 2px solid;
+  padding: 36px 48px;
+  border-radius: 2px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+.cert-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.cert-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.cert-logo-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cert-org {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A2332;
+  font-family: 'Poppins', sans-serif;
+}
+.cert-org-sub {
+  font-size: 0.78rem;
+  color: #5A6B7A;
+  font-family: 'Poppins', sans-serif;
+}
+.cert-title-section {
+  margin-top: 8px;
+}
+.cert-category-badge {
+  display: inline-block;
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.cert-main-title {
+  font-size: 2rem;
+  color: #1A2332;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: 1px;
+}
+.cert-divider {
+  height: 2px;
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 1px;
+}
+.cert-body {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+.cert-body-text {
+  font-size: 1rem;
+  color: #5A6B7A;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+.cert-student-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1A2332;
+  border-bottom: 2px solid;
+  padding-bottom: 6px;
+  letter-spacing: 2px;
+}
+.cert-event-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 8px;
+  padding-top: 12px;
+}
+.cert-sign-block {
+  text-align: center;
+  min-width: 160px;
+}
+.cert-sign-line {
+  border-top: 1.5px solid;
+  width: 140px;
+  margin: 0 auto 8px;
+}
+.cert-sign-label {
+  font-size: 0.72rem;
+  color: #5A6B7A;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cert-sign-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1A2332;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 2px;
+}
+.cert-seal {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cert-seal-inner {
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .cert-inner-border {
+    padding: 20px 16px;
+  }
+  .cert-student-name { font-size: 1.5rem; }
+  .cert-main-title { font-size: 1.4rem; }
+  .cert-event-name { font-size: 1.1rem; }
+  .cert-footer { flex-direction: column; align-items: center; gap: 20px; }
+}

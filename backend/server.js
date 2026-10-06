@@ -11,7 +11,14 @@ const registrationRoutes = require('./routes/registrations');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://tcet-events.vercel.app',
+    /\.vercel\.app$/   // allow any vercel preview URL too
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // connect to db

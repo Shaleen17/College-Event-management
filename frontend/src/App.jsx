@@ -12,8 +12,10 @@ import Register from './pages/Register';
 import EventDetails from './pages/EventDetails';
 import MyRegistrations from './pages/MyRegistrations';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminAnalytics from './pages/AdminAnalytics';
 import EventForm from './pages/EventForm';
 import EventRegistrations from './pages/EventRegistrations';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -35,6 +37,14 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute role="student">
+                <UserProfile />
+              </ProtectedRoute>
+            } 
+          />
           
           {/* Admin Routes */}
           <Route 
@@ -42,6 +52,14 @@ function App() {
             element={
               <ProtectedRoute role="admin">
                 <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/analytics" 
+            element={
+              <ProtectedRoute role="admin">
+                <AdminAnalytics />
               </ProtectedRoute>
             } 
           />

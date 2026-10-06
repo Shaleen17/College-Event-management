@@ -50,6 +50,7 @@ const Navbar = () => {
           {user && user.role === 'student' && (
             <>
               <Link to="/my-registrations" className="nav-link" onClick={closeMenu}>My Registrations</Link>
+              <Link to="/profile" className="nav-link" onClick={closeMenu}>👤 Profile</Link>
               <span className="nav-user">Hi, {user.name}</span>
               <button onClick={handleLogout} className="nav-link btn-logout">Logout</button>
             </>
@@ -58,6 +59,7 @@ const Navbar = () => {
           {user && user.role === 'admin' && (
             <>
               <Link to="/admin/dashboard" className="nav-link" onClick={closeMenu}>Dashboard</Link>
+              <Link to="/admin/analytics" className="nav-link" onClick={closeMenu}>📊 Analytics</Link>
               <span className="nav-user">Hi, {user.name}</span>
               <button onClick={handleLogout} className="nav-link btn-logout">Logout</button>
             </>
